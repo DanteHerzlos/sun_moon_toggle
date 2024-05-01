@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sun/Moon toggle</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="toggle" id="toggle">
+      <div class="galoGroup" id="galo">
+        <div class="galo galoSmall"></div>
+        <div class="galo galoMedium"></div>
+        <div class="galo galoBig"></div>
+      </div>
+
+      <div class="track">
+        <div class="sun" id="sun"></div>
+        <div class="moon" id="moon">
+          <div class="moonCraters">
+            <div class="crater craterSmall"></div>
+            <div class="crater craterMedium"></div>
+            <div class="crater craterBig"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cloudStars">
+        <div class="stars">
+          <img src="stars.svg" />
+        </div>
+        <div class="cloud">
+          <img src="cloud.svg" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>

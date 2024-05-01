@@ -1,0 +1,194 @@
+:root {
+  --sky-day-color: #3A8DCA;
+  --sky-night-color: #1B1D2A;
+
+  --sun-color: #FED62E;
+  --moon-color: #C4C9D2;
+  --cruter-color: #9DA5B5;
+  --track-shadow-2-color: #B49A2C;
+  /* #373737 */
+  --track-shadow-1-color: rgba(254, 255, 237, 0.61);
+  /* rgba(255, 255, 255, 0.61) */
+
+  --sun-moon-radius: 74px;
+  --sun-crater-small-radius: 15%;
+  --sun-crater-medium-radius: 22%;
+  --sun-crater-big-radius: 36%;
+  --galo-small-radius: 123px;
+  --galo-medium-radius: 174px;
+  --galo-big-radius: 230px;
+
+  --toggle-width: 223px;
+  --toggle-height: 88px;
+
+  --animation-time: 0.8s;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.toggle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: var(--sky-day-color);
+  width: var(--toggle-width);
+  height: var(--toggle-height);
+  border-radius: 120px;
+  box-shadow:
+    0px -1.81174px 2.41565px rgba(0, 0, 0, 0.25),
+    0px 2.41565px 2.41565px rgba(255, 255, 255, 0.94),
+    inset 0px 0.603912px 7.85086px rgba(0, 0, 0, 0.25),
+    inset 0px 4.22738px 5.43521px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  cursor: pointer;
+  transition: background-color var(--animation-time);
+}
+
+.toggle.active {
+  background-color: var(--sky-night-color);
+}
+
+.toggle.active .track {
+  transform: translateX(170%);
+}
+
+.toggle.active .moon {
+  transform: translateX(-100%);
+}
+
+.toggle.active .sun {
+  transform: translateX(100%);
+}
+
+.toggle.active .galoGroup {
+  transform: translateX(130px);
+}
+
+.toggle.active .cloudStars {
+  transform: translateY(102px);
+}
+
+.track {
+  z-index: 2;
+  position: absolute;
+  left: 5%;
+  background-color: var(--sun-color);
+  border-radius: 50%;
+  width: var(--sun-moon-radius);
+  height: var(--sun-moon-radius);
+  overflow: hidden;
+  transition: transform var(--animation-time) cubic-bezier(0.47, 0, 0.23, 1.38);
+  box-shadow:
+    0px 2.41565px 2.41565px rgba(0, 0, 0, 0.25),
+    2.41565px 4.22738px 4.8313px rgba(0, 0, 0, 0.25),
+    inset 1.81174px 2.41565px 2.41565px var(--track-shadow-1-color),
+    inset 0px -3.01956px 2.41565px var(--track-shadow-2-color);
+}
+
+.sun {
+  position: absolute;
+  border-radius: 50%;
+  width: var(--sun-moon-radius);
+  height: var(--sun-moon-radius);
+  transform: translateX(0%);
+}
+
+.moon {
+  position: absolute;
+  width: var(--sun-moon-radius);
+  height: var(--sun-moon-radius);
+  background-color: var(--moon-color);
+  border-radius: 50%;
+  left: 100%;
+  transform: translateX(0%);
+  box-shadow: 0px 2.41565px 2.41565px rgba(0, 0, 0, 0.25), 2.41565px 4.22738px 4.8313px rgba(0, 0, 0, 0.25), inset 0px -3.01956px 2.41565px #373737, inset 1.81174px 2.41565px 2.41565px rgba(255, 255, 255, 0.61);
+  transition: transform calc(var(--animation-time) - 0.1s);
+}
+
+.moonCraters {
+  position: relative;
+  width: inherit;
+  height: inherit;
+}
+
+.crater {
+  position: absolute;
+  background: #9DA5B5;
+  box-shadow: inset 0px 0.603912px 2.41565px rgba(0, 0, 0, 0.25);
+}
+
+.craterSmall {
+  border-radius: 50%;
+  width: var(--sun-crater-small-radius);
+  height: var(--sun-crater-small-radius);
+  top: 14%;
+  left: 38%;
+}
+
+.craterMedium {
+  border-radius: 50%;
+  width: var(--sun-crater-medium-radius);
+  height: var(--sun-crater-medium-radius);
+  top: 47%;
+  left: 64%;
+}
+
+.craterBig {
+  border-radius: 50%;
+  width: var(--sun-crater-big-radius);
+  height: var(--sun-crater-big-radius);
+  top: 44%;
+  left: 14%;
+}
+
+.galoGroup {
+  position: relative;
+  left: 21%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--animation-time) cubic-bezier(0.47, 0, 0.23, 1.38);
+}
+
+.galo {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.10);
+  border-radius: 50%;
+}
+
+.galoSmall {
+  width: var(--galo-small-radius);
+  height: var(--galo-small-radius);
+}
+
+.galoMedium {
+  width: var(--galo-medium-radius);
+  height: var(--galo-medium-radius);
+}
+
+.galoBig {
+  width: var(--galo-big-radius);
+  height: var(--galo-big-radius);
+}
+
+.cloudStars {
+  z-index: 1;
+  user-select: none;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  bottom: -40px;
+  left: 10px;
+  gap: 16px;
+  transition: transform var(--animation-time) cubic-bezier(0.47, 0, 0.23, 1.38);
+}
+
+.stars {
+  margin-left: 16px;
+}
